@@ -1,0 +1,5 @@
+﻿@model System.Data.Spatial.DbGeography
+@{ string textbox = Html.ClientIdFor(model => model).ToString(); }
+
+@Html.TextBox("")
+<div id="map_canvas" data-textboxid="@textbox" style="width:400px; height:400px"></div>
