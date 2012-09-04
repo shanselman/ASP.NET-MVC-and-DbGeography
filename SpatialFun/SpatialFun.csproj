@@ -178,7 +178,7 @@
     <Compile Include="ModelBinders\DbGeographyModelBinder.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AttractionContext.cs" />
-    <Compile Include="HtmlHelpers\HtmlExtentions.cs" />
+    <Compile Include="HtmlHelpers\HtmlExtensions.cs" />
     <Compile Include="Models\Tourists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -306,22 +306,6 @@
     <Content Include="Views\Review\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DbGeography.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DbGeography.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Week.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Text.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Search.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\PhoneNumber.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Month.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime-Local.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Color.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

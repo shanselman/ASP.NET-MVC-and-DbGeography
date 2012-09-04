@@ -21,7 +21,12 @@
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-
+          <div class="editor-label">
+            @Html.LabelFor(model => model.Location)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Location)        
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -33,5 +38,6 @@
 </div>
 
 @section Scripts {
+    <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>
     @Scripts.Render("~/bundles/jqueryval")
 }

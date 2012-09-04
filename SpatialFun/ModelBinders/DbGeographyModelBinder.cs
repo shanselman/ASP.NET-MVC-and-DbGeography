@@ -9,7 +9,6 @@ namespace MvcApplication2
 {
     public class DbGeographyModelBinder : DefaultModelBinder
     {
-
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var valueProviderResult = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
