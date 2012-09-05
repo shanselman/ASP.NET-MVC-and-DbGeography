@@ -13,7 +13,17 @@
       }
     }).insertAfter($input);
 
+    // Attempt to parse the lat/long coordinates out of this input element.
     var latLong = parseLatLong(this.value);
+
+    // If there was a problem attaining a lat/long from the input element's value,
+    //  set it to a sensible default that isn't in the middle of the ocean.
+    if (!latLong || !latLong.latitude || !latLong.longitude) {
+      latLong = {
+        latitude: 40.716948,
+        longitude: -74.003563
+      };
+    }
 
     // Create a "Google(r)(tm)" LatLong object representing our DBGeometry's lat/long.
     var position = new google.maps.LatLng(latLong.latitude, latLong.longitude);
@@ -35,6 +45,8 @@
     var updateMarker = function(updateEvent) {
       marker.setPosition(updateEvent.latLng);
 
+      // This new location might be outside the current viewport, especially
+      //  if it was manually entered. Pan to center on the new marker location.
       map.panTo(updateEvent.latLng);
 
       // Black magic, courtesy of Hanselman's original version.
