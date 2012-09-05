@@ -58,7 +58,7 @@
       google.maps.event.addListener(map, 'click', updateMarker);
 
       // Attempt to react to user edits in the input field.
-      $input.on('change', function(evt) {
+      $input.on('change', function() {
         var latLong = parseLatLong(this.value);
 
         latLong = new google.maps.LatLng(latLong.latitude, latLong.longitude);
@@ -69,8 +69,7 @@
   };
 
   var parseLatLong = function(value) {
-    if (!value)
-      return undefined;
+    if (!value) { return undefined; }
 
     var latLong = value.match(/-?\d+\.\d+/g);
 
@@ -80,8 +79,6 @@
     };
   };
 
-  // Find the textbox and cache it for later.
-  var $inputs = $('.editor-for-dbgeography, .display-for-dbgeography');
-
-  $inputs.each(initialize);
+  // Find all DBGeography inputs and initialize maps for them.
+  $('.editor-for-dbgeography, .display-for-dbgeography').each(initialize);
 })();
