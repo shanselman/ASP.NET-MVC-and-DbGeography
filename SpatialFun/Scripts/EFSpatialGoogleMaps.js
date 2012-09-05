@@ -31,12 +31,23 @@
     map: map
   });
 
-  google.maps.event.addListener(map, 'click', updateMarker);
-
-  function updateMarker(updateEvent) {
+  var updateMarker = function(updateEvent) {
     marker.setPosition(updateEvent.latLng);
+
+    map.panTo(updateEvent.latLng);
 
     // Black magic, courtesy of Hanselman's original version.
     $input.val(marker.getPosition().toUrlValue(13));
-  }
+  };
+
+  google.maps.event.addListener(map, 'click', updateMarker);
+
+  // Attempt to react to user edits in the input field.
+  $input.on('change', function(evt) {
+    var latLong = this.value.match(/-?\d+\.\d+/g);
+
+    latLong = new google.maps.LatLng(latLong[0], latLong[1]);
+
+    updateMarker({ latLng: latLong });
+  });
 })();
