@@ -1,6 +1,6 @@
 ﻿(function() {
   // Find the textbox and cache it for later.
-  var $input = $('.editor-for-dbgeography'),
+  var $input = $('.editor-for-dbgeography, .display-for-dbgeography'),
       latitude = $input.data('latitude'),
       longitude = $input.data('longitude');
 
@@ -40,14 +40,17 @@
     $input.val(marker.getPosition().toUrlValue(13));
   };
 
-  google.maps.event.addListener(map, 'click', updateMarker);
+  // If the input came from an EditorFor, initialize editing-related events.
+  if ($input.hasClass('editor-for-dbgeography')) {
+    google.maps.event.addListener(map, 'click', updateMarker);
 
-  // Attempt to react to user edits in the input field.
-  $input.on('change', function(evt) {
-    var latLong = this.value.match(/-?\d+\.\d+/g);
+    // Attempt to react to user edits in the input field.
+    $input.on('change', function(evt) {
+      var latLong = this.value.match(/-?\d+\.\d+/g);
 
-    latLong = new google.maps.LatLng(latLong[0], latLong[1]);
+      latLong = new google.maps.LatLng(latLong[0], latLong[1]);
 
-    updateMarker({ latLng: latLong });
-  });
+      updateMarker({ latLng: latLong });
+    });
+  }
 })();
