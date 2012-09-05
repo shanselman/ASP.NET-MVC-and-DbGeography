@@ -21,6 +21,8 @@ namespace MvcApplication2
         }
     }
 
+  
+
     public class EFModelBinderProvider : IModelBinderProvider
     {
         public IModelBinder GetBinder(Type modelType)
