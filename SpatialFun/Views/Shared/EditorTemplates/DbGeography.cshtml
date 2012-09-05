@@ -1,11 +1,2 @@
 ﻿@model System.Data.Spatial.DbGeography
-@Html.TextBox("")
-@if (Model != null) { 
-    <script>
-        $(function () {
-            maps.markerToSet = new google.maps.LatLng(@Model.Latitude, @Model.Longitude);
-        });
-    </script>
-}
-@{ string textbox = Html.ClientIdFor(model => model).ToString(); }
-<div id="map_canvas" data-textboxid="@textbox" style="width:400px; height:400px"></div>
+@Html.TextBox("", Model.Latitude + "," + Model.Longitude, new { data_latitude = Model.Latitude, data_longitude = Model.Longitude, @class = "editor-for-dbgeography" })

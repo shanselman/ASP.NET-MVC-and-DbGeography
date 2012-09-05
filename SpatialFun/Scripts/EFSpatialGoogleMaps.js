@@ -1,48 +1,42 @@
-﻿function maps() { }
-maps.mapInstance = null;
-maps.marker= null;
-maps.mapInstanceId = "map_canvas";
-maps.markerToSet = null;
+﻿(function() {
+  // Find the textbox and cache it for later.
+  var $input = $('.editor-for-dbgeography'),
+      latitude = $input.data('latitude'),
+      longitude = $input.data('longitude');
 
-function initialize() {
-    var latlng = new google.maps.LatLng(40.716948, -74.003563);
-    var options = {
-        zoom: 14, center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        maxZoom: 14
-    };
-    maps.mapInstance = new google.maps.Map(document.getElementById(maps.mapInstanceId), options);
-
-    google.maps.event.addListener(maps.mapInstance, 'click', function (event) {
-        placeMarker(event.latLng);
-    });
-
-    google.maps.event.addListenerOnce(maps.mapInstance, 'idle', function (event) {
-        if (maps.markerToSet) {
-            placeMarker(maps.markerToSet);
-            var bound = new google.maps.LatLngBounds();
-            bound.extend(maps.markerToSet);
-            maps.mapInstance.fitBounds(bound);
-        }
-    });
-}
-
-function placeMarker(location) {
-    if (maps.marker) {
-        maps.marker.setPosition(location);
-    } else {
-        maps.marker = new google.maps.Marker({
-            position: location,
-            map: maps.mapInstance
-        });
+  // Create the map div and insert it into the page.
+  var $map = $('<div>', {
+    css: {
+      width: '400px',
+      height: '400px'
     }
+  }).insertAfter($input);
 
-    if (maps.marker) {
-        var textboxid = $("#" + maps.mapInstanceId).data("textboxid");
-        $("#" + textboxid).val(maps.marker.getPosition().toUrlValue(13));
-    }
-}
+  // Create a "Google(r)(tm)" LatLong object representing our DBGeometry's lat/long.
+  var position = new google.maps.LatLng(latitude, longitude);
 
-$(function () {
-    initialize();
-});
+  var mapOptions = {
+    zoom: 14,
+    center: position,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    maxZoom: 14
+  };
+
+  // Initialize the map widget.
+  var map = new google.maps.Map($map[0], mapOptions);
+
+  // Place a marker on it, representing the DBGeometry object's position.
+  var marker = new google.maps.Marker({
+    position: position,
+    map: map
+  });
+
+  google.maps.event.addListener(map, 'click', updateMarker);
+
+  function updateMarker(updateEvent) {
+    marker.setPosition(updateEvent.latLng);
+
+    // Black magic, courtesy of Hanselman's original version.
+    $input.val(marker.getPosition().toUrlValue(13));
+  }
+})();
