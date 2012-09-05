@@ -3,9 +3,7 @@
   var initialize = function(i, el) {
     // el is the input element that we need to initialize a map for, jQuery-ize it,
     //  and cache that since we'll be using it a few times.
-    var $input = $(el),
-        latitude = $input.data('latitude'),
-        longitude = $input.data('longitude');
+    var $input = $(el);
 
     // Create the map div and insert it into the page.
     var $map = $('<div>', {
@@ -15,18 +13,18 @@
       }
     }).insertAfter($input);
 
-    // Create a "Google(r)(tm)" LatLong object representing our DBGeometry's lat/long.
-    var position = new google.maps.LatLng(latitude, longitude);
+    var latLong = parseLatLong(this.value);
 
-    var mapOptions = {
+    // Create a "Google(r)(tm)" LatLong object representing our DBGeometry's lat/long.
+    var position = new google.maps.LatLng(latLong.latitude, latLong.longitude);
+
+    // Initialize the map widget.
+    var map = new google.maps.Map($map[0], {
       zoom: 14,
       center: position,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       maxZoom: 14
-    };
-
-    // Initialize the map widget.
-    var map = new google.maps.Map($map[0], mapOptions);
+    });
 
     // Place a marker on it, representing the DBGeometry object's position.
     var marker = new google.maps.Marker({
@@ -49,13 +47,25 @@
 
       // Attempt to react to user edits in the input field.
       $input.on('change', function(evt) {
-        var latLong = this.value.match(/-?\d+\.\d+/g);
+        var latLong = parseLatLong(this.value);
 
-        latLong = new google.maps.LatLng(latLong[0], latLong[1]);
+        latLong = new google.maps.LatLng(latLong.latitude, latLong.longitude);
 
         updateMarker({ latLng: latLong });
       });
     }
+  };
+
+  var parseLatLong = function(value) {
+    if (!value)
+      return undefined;
+
+    var latLong = value.match(/-?\d+\.\d+/g);
+
+    return {
+      latitude: latLong[0],
+      longitude: latLong[1]
+    };
   };
 
   // Find the textbox and cache it for later.
