@@ -1,25 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="MvcApplication2.WebForms.Create" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-     <%: Styles.Render("~/Content/css") %>
-        <%: Scripts.Render("~/bundles/modernizr") %>
-        <%: Scripts.Render("~/bundles/jquery") %>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>              
-    <script type="text/javascript" src="<%: ResolveUrl("~/Scripts/EFSpatialGoogleMaps.js") %>"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="MvcApplication2.WebForms.Create" MasterPageFile="~/Views/Shared/Site.Master" %>
+<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>
+                    
+                <h2>Modify this template to jump-start your ASP.NET WebForm application.</h2>
+            </hgroup>
+        </div>
+    </section>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
     <div>
     <fieldset><legend>Create New Attraction</legend>
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <asp:ScriptReference Name="jquery" />
-            </Scripts>
-        </asp:ScriptManager>
+        
         <asp:FormView runat="server" ID="attractionsForm" RenderOuterTable="false"
             ItemType="MvcApplication2.Models.TouristAttraction"
             DefaultMode="Insert"
@@ -44,6 +39,4 @@
         </asp:FormView>
         </fieldset>
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

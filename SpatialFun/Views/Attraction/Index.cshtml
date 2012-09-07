@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.RouteLink("Create New","Default",new {Controller="Attraction", action="Create"})
 </p>
 <table>
     <tr>
@@ -23,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TouristAttractionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TouristAttractionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TouristAttractionId })
+            @Html.RouteLink("Edit", "Default",new {Controller="Attraction", action="Edit",id=item.TouristAttractionId}) |
+            @Html.RouteLink("Details", "Default",new {Controller="Attraction", action="Details",id=item.TouristAttractionId})|
+            @Html.RouteLink("Delete", "Default",new {Controller="Attraction", action="Delete",id=item.TouristAttractionId})
         </td>
     </tr>
 }

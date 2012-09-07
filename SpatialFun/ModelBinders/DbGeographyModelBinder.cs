@@ -43,13 +43,25 @@ namespace MvcApplication2
         }
     }
 
-  
+
 
     public class EFModelBinderProvider : System.Web.Mvc.IModelBinderProvider
     {
         public MvcModelBinder GetBinder(Type modelType)
         {
             if (modelType == typeof(DbGeography))
+            {
+                return new DbGeographyModelBinder();
+            }
+            return null;
+        }
+    }
+
+    public class EFModelBinderProviderWebForms : ModelBinderProvider
+    {
+        public override WebFormsModelBinder GetBinder(ModelBindingExecutionContext modelBindingExecutionContext, WebFormsModelBindingContext bindingContext)
+        {
+            if (bindingContext.ModelType == typeof(DbGeography))
             {
                 return new DbGeographyModelBinder();
             }

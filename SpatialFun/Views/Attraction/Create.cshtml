@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
@@ -32,12 +33,10 @@
     </fieldset>
 }
 
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div>    
+      @Html.RouteLink("Back to List","Default",new {Controller="Attraction", action="Index"})
 </div>
 
-@section Scripts {
-    <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>
+@section Scripts {  
     @Scripts.Render("~/bundles/jqueryval")
 }

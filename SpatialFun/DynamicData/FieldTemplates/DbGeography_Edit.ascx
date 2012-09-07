@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" CodeBehind="DbGeography_Edit.ascx.cs" Inherits="MvcApplication2.DynamicData.FieldTemplates.DbGeography_EditField" %>
-Edit/Create
+
 <% if(this.geo !=null) { %>
 <script>
     $(function () {        

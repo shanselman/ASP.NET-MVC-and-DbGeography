@@ -1,31 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="MvcApplication2.WebForms.Details"
-    
-     %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <%: Styles.Render("~/Content/css") %>
-        <%: Scripts.Render("~/bundles/modernizr") %>
-        <%: Scripts.Render("~/bundles/jquery") %>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>              
-    <script type="text/javascript" src="<%: ResolveUrl("~/Scripts/EFSpatialGoogleMaps.js") %>"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    Details
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="MvcApplication2.WebForms.Details" MasterPageFile="~/Views/Shared/Site.Master" %>
+<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>
+                    
+                <h2>Modify this template to jump-start your ASP.NET WebForm application.</h2>
+            </hgroup>
+        </div>
+    </section>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<div>
+    <h2>Details</h2>
         <asp:FormView runat="server" ItemType="MvcApplication2.Models.TouristAttraction" ID="attractionDetails"
             SelectMethod="attractionDetails_GetItem">
             <ItemTemplate>  
                 <asp:DynamicControl DataField="name" runat="server" />
                 <br />
                 <asp:DynamicControl DataField="location" runat="server" />
+                 <a id="A1" runat="server"
+                            href='<%# GetRouteUrl("TouristAttractionEdit", new { id = Item.TouristAttractionId }) %>'>Edit</a>
+                        |<a id="A2" runat="server"
+                            href='<%# GetRouteUrl("TouristAttraction",null) %>'>Back To List</a>
             </ItemTemplate>
         </asp:FormView>
     </div>
-    </form>
-</body>
-</html>
+    </asp:Content>
