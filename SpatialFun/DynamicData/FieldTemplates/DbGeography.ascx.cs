@@ -19,31 +19,12 @@ namespace MvcApplication2.DynamicData.FieldTemplates
     {
         public System.Data.Spatial.DbGeography geo;
 
-
-
         protected override void OnDataBinding(EventArgs e)
         {
-                base.OnDataBinding(e);
-                object val = FieldValue;
-                geo = ((System.Data.Spatial.DbGeography)val);
+                base.OnDataBinding(e);                
+                geo = ((System.Data.Spatial.DbGeography)FieldValue);
         }
-
-        protected override void OnLoad(EventArgs e)
-        {
-            //Todo: Convert column to dbgeography type so that we can retreive the latitude location from this field
-            base.OnLoad(e);
-
-            //System.Data.Spatial.DbGeography geo =
-            //   Convert.ChangeType((object)this.Column, typeof(System.Data.Spatial.DbGeography));
-            //var lat = ((System.Data.Spatial.DbGeography)this.Column).Latitude;
-            
-            //((System.Data.Spatial.DbGeography)val)
-
-
-            Type dbgeography = Column.GetType();
-            
-
-        }
+        
         public override Control DataControl
         {
             get

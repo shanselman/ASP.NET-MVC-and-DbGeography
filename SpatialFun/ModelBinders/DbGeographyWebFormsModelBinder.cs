@@ -9,7 +9,7 @@ using System.Web.ModelBinding;
 
 namespace MvcApplication2
 {
-    public class DbGeographyModelBinderWebForms : DefaultModelBinder
+    public class DbGeographyModelBinderWebForms : IModelBinder
     {
         public bool BindModel(ModelBindingExecutionContext modelBindingExecutionContext, ModelBindingContext bindingContext)
         {
@@ -22,6 +22,7 @@ namespace MvcApplication2
             //4326 format puts LONGITUDE first then LATITUDE
             DbGeography result = valueProviderResult == null ? null :
                 DbGeography.FromText(point, 4326);
+            bindingContext.Model = result;
             //if (binder != null)
             //{
             //    bool flag = binder.BindModel(modelBindingExecutionContext, modelBindingContext);
@@ -44,7 +45,7 @@ namespace MvcApplication2
         {
             if (bindingContext.ModelType == typeof(DbGeography))
             {
-                return new DbGeographyModelBinderWebForms();
+                return new DbGeographyModelBinder();
             }
             return null;
         }

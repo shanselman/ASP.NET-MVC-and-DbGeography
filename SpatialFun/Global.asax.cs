@@ -28,7 +28,7 @@ namespace MvcApplication2
             ModelBinderProviders.BinderProviders.Add(new EFModelBinderProvider());
             
             //adding webforms provider
-            System.Web.ModelBinding.ModelBinderProviders.Providers.Add(new EFModelBinderProviderWebForms());
+            System.Web.ModelBinding.ModelBinderProviders.Providers.Insert(ModelBinderProviders.BinderProviders.Count() -1,new EFModelBinderProviderWebForms());
 
         }
     }

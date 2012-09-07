@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="MvcApplication2.WebForms.Create" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="MvcApplication2.WebForms.Edit" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
      <%: Styles.Render("~/Content/css") %>
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -15,35 +15,37 @@
     <form id="form1" runat="server">
     <div>
     <fieldset><legend>Create New Attraction</legend>
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
             <Scripts>
                 <asp:ScriptReference Name="jquery" />
             </Scripts>
         </asp:ScriptManager>
         <asp:FormView runat="server" ID="attractionsForm" RenderOuterTable="false"
             ItemType="MvcApplication2.Models.TouristAttraction"
-            DefaultMode="Insert"
-            InsertMethod="attractionsForm_InsertItem"
-            OnItemInserted="attractionsForm_ItemInserted"
-            OnItemCommand="attractionsForm_ItemCommand">
-            <InsertItemTemplate>
+            SelectMethod="attractionsForm_GetItem"
+            DefaultMode="Edit"
+            UpdateMethod="attractionsForm_UpdateItem"
+            OnItemUpdated="attractionsForm_ItemUpdated"
+            OnItemCommand="attractionsForm_ItemCommand"
+            >
+            <EditItemTemplate>
                 <ol>
                     <li>
                         <label>Name:</label>
-                        <asp:DynamicControl runat="server" ID="name" DataField="Name" Mode="Insert" />
+                        <asp:DynamicControl runat="server" ID="name" DataField="Name" Mode="Edit" />
                     </li>
                     <li>
                         <label>Location:</label>
-<%--                        <asp:TextBox ID="location" runat="server" Text="<%# BindItem.Location %>"></asp:TextBox>--%>
-                        <asp:DynamicControl runat="server" ID="Location" DataField="Location" Mode="Insert" />
+                        <asp:DynamicControl runat="server" ID="Location" DataField="Location" Mode="Edit" />
                     </li>
                 </ol>
-                <asp:Button ID="Button1" runat="server" CommandName="Insert" Text="Save" />
+                <asp:Button ID="Button1" runat="server" CommandName="Update" Text="Update" />
                 <asp:Button ID="Button2" runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" />
-            </InsertItemTemplate>
+            </EditItemTemplate>
         </asp:FormView>
         </fieldset>
     </div>
     </form>
 </body>
 </html>
+

@@ -20,7 +20,21 @@ namespace MvcApplication2.DynamicData.FieldTemplates
         public System.Data.Spatial.DbGeography geo;
 
 
+        protected override void ExtractValues(IOrderedDictionary dictionary)
+        {            
+            //object val = location.Text;            
+            //geo = ((System.Data.Spatial.DbGeography)val);
+            //dictionary[Column.Name] = System.Data.Spatial.DbGeography.FromText(location.Text);
 
+            //string[] latLongStr = location.Text.Split(',');
+            //string point = string.Format("POINT ({0} {1})", latLongStr[1], latLongStr[0]);
+            ////4326 format puts LONGITUDE first then LATITUDE
+            //System.Data.Spatial.DbGeography result = System.Data.Spatial.DbGeography.FromText(point, 4326);
+            //dictionary[Column.Name] = result;
+            dictionary[Column.Name] = location.Text;
+
+        }
+    
         protected override void OnDataBinding(EventArgs e)
         {
             base.OnDataBinding(e);
