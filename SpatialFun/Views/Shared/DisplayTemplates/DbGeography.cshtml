@@ -1,6 +1,8 @@
-﻿@model System.Data.Spatial.DbGeography
-@if (Model != null) {
-  @Html.TextBox("", Model.Latitude + "," + Model.Longitude, new { @class = "display-for-dbgeography", disabled = true })
+﻿@using System.Globalization
+@model System.Data.Spatial.DbGeography
+@if (Model != null && Model.Latitude.HasValue && Model.Longitude.HasValue)
+{
+  @Html.TextBox("", Model.Latitude.Value.ToString("G",CultureInfo.InvariantCulture) + "," + Model.Longitude.Value.ToString("G",CultureInfo.InvariantCulture), new { @class = "display-for-dbgeography", disabled = true })
 } else {
   @Html.TextBox("", "n/a", new { disabled = true })
 }

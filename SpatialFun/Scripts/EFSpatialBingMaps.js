@@ -269,11 +269,3 @@
     $('.editor-for-dbgeography, .display-for-dbgeography').each(initialize);
 })();
 
-
-//I was working in something similar with the Bing MAps, so i resolved to try and share my version.
-
-//I used a draggble puspin to help select the right location on the map when adding or editing.
-
-//The bing maps uses the good looking Me-ro theme, and also makes use of the search module, and a infobox module. to Show a infobox with a reverse geocode of the geolocation of the dragged pin.
-
-//Im not a big javascript coder so please feel free to make better sugestions.  
