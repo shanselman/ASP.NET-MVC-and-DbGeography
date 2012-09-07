@@ -6,7 +6,7 @@
             <hgroup class="title">
                 <h1>
 
-                    <h2>Modify this template to jump-start your ASP.NET WebForm application.</h2>
+                    <h2>Modify this template to jump-start your WebForm application.</h2>
             </hgroup>
         </div>
     </section>

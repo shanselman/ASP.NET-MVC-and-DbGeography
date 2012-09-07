@@ -5,7 +5,7 @@
             <hgroup class="title">
                 <h1>
                     
-                <h2>Modify this template to jump-start your ASP.NET WebForm application.</h2>
+                <h2>Modify this template to jump-start your WebForm application.</h2>
             </hgroup>
         </div>
     </section>
@@ -16,8 +16,9 @@
         <asp:FormView runat="server" ItemType="MvcApplication2.Models.TouristAttraction" ID="attractionDetails"
             SelectMethod="attractionDetails_GetItem">
             <ItemTemplate>  
-                <asp:DynamicControl DataField="name" runat="server" />
+                Name:<br/><asp:DynamicControl DataField="name" runat="server" />                
                 <br />
+                Location:
                 <asp:DynamicControl DataField="location" runat="server" />
                  <a id="A1" runat="server"
                             href='<%# GetRouteUrl("TouristAttractionEdit", new { id = Item.TouristAttractionId }) %>'>Edit</a>
