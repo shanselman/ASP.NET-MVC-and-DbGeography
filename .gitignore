@@ -5,3 +5,5 @@ packages
 
 # mstest test results
 TestResults
+
+*.suo
