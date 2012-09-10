@@ -12,6 +12,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using System.Web.DynamicData;
+using System.Globalization;
 
 namespace MvcApplication2.DynamicData.FieldTemplates
 {
@@ -40,6 +41,7 @@ namespace MvcApplication2.DynamicData.FieldTemplates
             base.OnDataBinding(e);
             object val = FieldValue;
             geo = ((System.Data.Spatial.DbGeography)val);
+            location.Text = geo.Latitude.Value.ToString("G",CultureInfo.InvariantCulture) + "," + geo.Longitude.Value.ToString("G",CultureInfo.InvariantCulture);    
         }
 
         protected void Page_Load(object sender, EventArgs e)

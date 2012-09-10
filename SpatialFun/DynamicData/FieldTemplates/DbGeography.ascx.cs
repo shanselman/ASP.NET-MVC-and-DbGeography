@@ -21,10 +21,11 @@ namespace MvcApplication2.DynamicData.FieldTemplates
 
         protected override void OnDataBinding(EventArgs e)
         {
-                base.OnDataBinding(e);                
-                geo = ((System.Data.Spatial.DbGeography)FieldValue);
-        }
-        
+            base.OnDataBinding(e);
+            System.Data.Spatial.DbGeography geo = (System.Data.Spatial.DbGeography)(FieldValue);
+            location.Text = geo.Latitude + "," + geo.Longitude;    
+        }       
+
         public override Control DataControl
         {
             get
