@@ -203,20 +203,6 @@
     <Compile Include="HtmlHelpers\HtmlExtensions.cs" />
     <Compile Include="Models\Tourists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,7 +305,6 @@
     <Content Include="DynamicData\FieldTemplates\DbGeography_Edit.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForms\Create.aspx" />
     <Content Include="WebForms\Default.aspx" />
     <Content Include="WebForms\Delete.aspx" />
@@ -388,7 +373,6 @@
     <Content Include="Views\Shared\EditorTemplates\DbGeography.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DbGeography.cshtml" />
     <Content Include="Views\Shared\Site.Master" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
