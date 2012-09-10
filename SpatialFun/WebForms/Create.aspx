@@ -3,8 +3,6 @@
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
-                <h1>
-                    
                 <h2>Modify this template to jump-start your WebForm application.</h2>
             </hgroup>
         </div>

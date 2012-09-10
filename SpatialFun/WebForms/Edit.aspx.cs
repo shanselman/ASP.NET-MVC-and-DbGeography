@@ -1,4 +1,5 @@
-﻿using MvcApplication2.Models;
+﻿using Microsoft.AspNet.FriendlyUrls;
+using MvcApplication2.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,12 +19,13 @@ namespace MvcApplication2.WebForms
         {
             if (e.CommandName == "Cancel")
             {
-                Response.RedirectToRoute("TouristAttraction");
+                Response.Redirect("~/WebForms");
             }
         }
 
         // The id parameter name should match the DataKeyNames value set on the control
-        public void attractionsForm_UpdateItem([RouteData]int? id)
+        public void attractionsForm_UpdateItem(
+            [FriendlyUrlSegments]int? id)
         {
             MvcApplication2.Models.TouristAttraction item = db.TouristAttractions.Find(id); 
             // Load the item here, e.g. item = MyDataLayer.Find(id);
@@ -44,14 +46,13 @@ namespace MvcApplication2.WebForms
 
         protected void attractionsForm_ItemUpdated(object sender, FormViewUpdatedEventArgs e)
         {
-            {
-                Response.RedirectToRoute("TouristAttraction");
-            }
+            Response.Redirect("~/WebForms");
         }
 
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
-        public MvcApplication2.Models.TouristAttraction attractionsForm_GetItem([RouteData]int? id)
+        public MvcApplication2.Models.TouristAttraction attractionsForm_GetItem(
+            [FriendlyUrlSegments]int? id)
         {
             TouristAttraction touristattraction = db.TouristAttractions.Find(id);
             return touristattraction;

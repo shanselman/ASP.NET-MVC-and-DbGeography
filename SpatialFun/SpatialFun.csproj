@@ -47,6 +47,9 @@
     <Reference Include="ByndyuSoft.Infrastructure.Web">
       <HintPath>..\packages\Infrastructure.Web.1.0.9\lib\ByndyuSoft.Infrastructure.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.1.0.0-alpha1\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -176,7 +179,6 @@
     <Compile Include="Controllers\AttractionController.cs" />
     <Compile Include="Controllers\ControllerExtensions.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="DynamicData\FieldTemplates\DbGeography.ascx.cs">
       <DependentUpon>DbGeography.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,12 +203,19 @@
     <Compile Include="HtmlHelpers\HtmlExtensions.cs" />
     <Compile Include="Models\Tourists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Shared\RazorView.aspx.cs">
-      <DependentUpon>RazorView.aspx</DependentUpon>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Shared\RazorView.aspx.designer.cs">
-      <DependentUpon>RazorView.aspx</DependentUpon>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -310,7 +319,7 @@
     <Content Include="DynamicData\FieldTemplates\DbGeography_Edit.ascx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Views\Shared\RazorView.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
     <Content Include="WebForms\Create.aspx" />
     <Content Include="WebForms\Default.aspx" />
     <Content Include="WebForms\Delete.aspx" />
@@ -376,14 +385,10 @@
     <Content Include="Views\Attraction\Create.cshtml" />
     <Content Include="Views\Attraction\Edit.cshtml" />
     <Content Include="Views\Attraction\Delete.cshtml" />
-    <Content Include="Views\Review\Index.cshtml" />
-    <Content Include="Views\Review\Details.cshtml" />
-    <Content Include="Views\Review\Create.cshtml" />
-    <Content Include="Views\Review\Edit.cshtml" />
-    <Content Include="Views\Review\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DbGeography.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DbGeography.cshtml" />
     <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,7 @@ namespace MvcApplication2.Controllers
 
         public ActionResult Index()
         {
-            return this.RazorView(db.TouristAttractions.ToList());
+            return View(db.TouristAttractions.ToList());
         }
 
         //
@@ -31,7 +31,7 @@ namespace MvcApplication2.Controllers
             {
                 return HttpNotFound();
             }
-            return this.RazorView(touristattraction);
+            return View(touristattraction);
         }
 
         //
@@ -39,7 +39,7 @@ namespace MvcApplication2.Controllers
 
         public ActionResult Create()
         {
-            return this.RazorView();
+            return View();
         }
 
         //
@@ -55,7 +55,7 @@ namespace MvcApplication2.Controllers
                 return RedirectToAction("Index");
             }
 
-            return this.RazorView(touristattraction);
+            return View(touristattraction);
         }
 
         //
@@ -68,7 +68,7 @@ namespace MvcApplication2.Controllers
             {
                 return HttpNotFound();
             }
-            return this.RazorView(touristattraction);
+            return View(touristattraction);
         }
 
         //
@@ -83,7 +83,7 @@ namespace MvcApplication2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return this.RazorView(touristattraction);
+            return View(touristattraction);
         }
 
         //
@@ -96,7 +96,7 @@ namespace MvcApplication2.Controllers
             {
                 return HttpNotFound();
             }
-            return this.RazorView(touristattraction);
+            return View(touristattraction);
         }
 
         //

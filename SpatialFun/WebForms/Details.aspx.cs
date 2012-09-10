@@ -1,4 +1,5 @@
-﻿using MvcApplication2.Models;
+﻿using Microsoft.AspNet.FriendlyUrls;
+using MvcApplication2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace MvcApplication2.WebForms
 
         // The id parameter should match the DataKeyNames value set on the control
         // or be decorated with a value provider attribute, e.g. [QueryString]int id
-        public MvcApplication2.Models.TouristAttraction attractionDetails_GetItem([RouteData]int? id)
+        public MvcApplication2.Models.TouristAttraction attractionDetails_GetItem(
+            [FriendlyUrlSegments]int? id)
         {
             TouristAttraction touristattraction = db.TouristAttractions.Find(id);
             return touristattraction;

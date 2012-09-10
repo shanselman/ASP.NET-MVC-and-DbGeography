@@ -5,3 +5,7 @@ packages
 
 # mstest test results
 TestResults
+
+*.suo
+*.mdf
+*.ldf

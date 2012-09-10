@@ -21,10 +21,8 @@
                 Location:
                 <asp:DynamicControl DataField="location" runat="server" />
                 <br />
-                <a id="A1" runat="server"
-                    href='<%# GetRouteUrl("TouristAttractionEdit", new { id = Item.TouristAttractionId }) %>'>Edit</a>
-                |<a id="A2" runat="server"
-                    href='<%# GetRouteUrl("TouristAttraction",null) %>'>Back To List</a>
+                <a id="A1" href='<%# FriendlyUrl.Href("~/WebForms/Edit", Item.TouristAttractionId ) %>'>Edit</a>
+                | <a id="A1" href='<%# FriendlyUrl.Href("~/WebForms") %>'>Back To List</a>
             </ItemTemplate>
         </asp:FormView>
     </div>

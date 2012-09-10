@@ -32,7 +32,7 @@ namespace MvcApplication2.WebForms
         {
             
             {
-                Response.RedirectToRoute("TouristAttraction");
+                Response.Redirect("~/WebForms");
             }
         }
 
@@ -40,7 +40,7 @@ namespace MvcApplication2.WebForms
         {
             if (e.CommandName=="Cancel")
             {
-                Response.RedirectToRoute("TouristAttraction");
+                Response.Redirect("~/WebForms");
             }
         }
     }

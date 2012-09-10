@@ -39,9 +39,11 @@ namespace MvcApplication2.DynamicData.FieldTemplates
         protected override void OnDataBinding(EventArgs e)
         {
             base.OnDataBinding(e);
-            object val = FieldValue;
-            geo = ((System.Data.Spatial.DbGeography)val);
-            location.Text = geo.Latitude.Value.ToString("G",CultureInfo.InvariantCulture) + "," + geo.Longitude.Value.ToString("G",CultureInfo.InvariantCulture);    
+            var geo = FieldValue as System.Data.Spatial.DbGeography;
+            if (geo != null)
+            {
+                location.Text = geo.Latitude.Value.ToString("G", CultureInfo.InvariantCulture) + "," + geo.Longitude.Value.ToString("G", CultureInfo.InvariantCulture);
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
