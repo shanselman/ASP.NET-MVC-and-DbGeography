@@ -26,6 +26,10 @@ namespace MvcApplication2
             AuthConfig.RegisterAuth();
 
             ModelBinderProviders.BinderProviders.Add(new EFModelBinderProvider());
+            
+            //adding webforms provider
+            System.Web.ModelBinding.ModelBinderProviders.Providers.Insert(ModelBinderProviders.BinderProviders.Count() -1,new EFModelBinderProviderWebForms());
+
         }
     }
 }
