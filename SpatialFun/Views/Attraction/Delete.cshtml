@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -20,6 +21,10 @@
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.RouteLink("Back to List","Default",new {Controller="Attraction", action="Index"})
     </p>
 }
+@section Scripts {    
+    <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>
+}
+

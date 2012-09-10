@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -34,10 +35,13 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    
+    @Html.RouteLink("Back to List","Default",new {Controller="Attraction", action="Index"})
 </div>
 
-@section Scripts {
-    <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>
-    @Scripts.Render("~/bundles/jqueryval")
+@section Scripts {    
+   @* We are sharing the script manager with the one on Site.master so we don't need these. *@
+    @* Scripts.Render("~/bundles/jqueryval") *@    
+    @*<script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>*@
+}
 }

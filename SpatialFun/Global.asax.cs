@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WF = System.Web.ModelBinding;
 
 namespace MvcApplication2
 {
@@ -25,7 +26,15 @@ namespace MvcApplication2
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            //Add my MVC Provider
             ModelBinderProviders.BinderProviders.Add(new EFModelBinderProvider());
+            
+            //I could register a spceific type, without a provider...
+            //WF.ModelBinderProviders.Providers.RegisterBinderForType(typeof(DbGeography), new DbGeographyModelBinder());
+
+            //Or just put my provider first as it's pretty specific
+            WF.ModelBinderProviders.Providers.Insert(0,new EFModelBinderProviderWebForms());
+
         }
     }
 }

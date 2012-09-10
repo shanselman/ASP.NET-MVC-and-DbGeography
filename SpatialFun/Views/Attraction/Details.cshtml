@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
@@ -24,10 +25,11 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TouristAttractionId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.RouteLink("Edit", "Default",new {Controller="Attraction", action="Edit",id=Model.TouristAttractionId})    
+    @Html.RouteLink("Back to List","Default",new {Controller="Attraction", action="Index"})
 </p>
 
-@section Scripts {
+@section Scripts {    
     <script type="text/javascript" src="~/Scripts/EFSpatialGoogleMaps.js"/></script>
 }
+
