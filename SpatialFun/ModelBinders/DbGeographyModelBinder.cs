@@ -5,14 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Mvc;
-using MvcModelBinder = System.Web.Mvc.IModelBinder;
+
+using IMvcModelBinder = System.Web.Mvc.IModelBinder;
+using IWebFormsModelBinder = System.Web.ModelBinding.IModelBinder;
+
 using MvcModelBindingContext = System.Web.Mvc.ModelBindingContext;
-using WebFormsModelBinder = System.Web.ModelBinding.IModelBinder;
 using WebFormsModelBindingContext = System.Web.ModelBinding.ModelBindingContext;
 
 namespace MvcApplication2
 {
-    public class DbGeographyModelBinder : MvcModelBinder, WebFormsModelBinder
+    public class DbGeographyModelBinder : IMvcModelBinder, IWebFormsModelBinder
     {
         public object BindModel(ControllerContext controllerContext, MvcModelBindingContext bindingContext)
         {
@@ -45,26 +47,22 @@ namespace MvcApplication2
 
 
 
-    public class EFModelBinderProvider : System.Web.Mvc.IModelBinderProvider
+    public class EFModelBinderProviderMvc : System.Web.Mvc.IModelBinderProvider
     {
-        public MvcModelBinder GetBinder(Type modelType)
+        public IMvcModelBinder GetBinder(Type modelType)
         {
             if (modelType == typeof(DbGeography))
-            {
                 return new DbGeographyModelBinder();
-            }
             return null;
         }
     }
 
-    public class EFModelBinderProviderWebForms : ModelBinderProvider
+    public class EFModelBinderProviderWebForms : System.Web.ModelBinding.ModelBinderProvider
     {
-        public override WebFormsModelBinder GetBinder(ModelBindingExecutionContext modelBindingExecutionContext, WebFormsModelBindingContext bindingContext)
+        public override IWebFormsModelBinder GetBinder(ModelBindingExecutionContext modelBindingExecutionContext, WebFormsModelBindingContext bindingContext)
         {
             if (bindingContext.ModelType == typeof(DbGeography))
-            {
                 return new DbGeographyModelBinder();
-            }
             return null;
         }
     }

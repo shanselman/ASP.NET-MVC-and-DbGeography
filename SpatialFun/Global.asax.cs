@@ -27,7 +27,7 @@ namespace MvcApplication2
             AuthConfig.RegisterAuth();
 
             //Add my MVC Provider
-            ModelBinderProviders.BinderProviders.Add(new EFModelBinderProvider());
+            ModelBinderProviders.BinderProviders.Add(new EFModelBinderProviderMvc());
             
             //I could register a spceific type, without a provider...
             //WF.ModelBinderProviders.Providers.RegisterBinderForType(typeof(DbGeography), new DbGeographyModelBinder());
