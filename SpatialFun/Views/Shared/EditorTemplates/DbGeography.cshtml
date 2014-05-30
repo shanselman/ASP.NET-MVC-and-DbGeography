@@ -1,7 +1,7 @@
 ﻿@model System.Data.Spatial.DbGeography
 @using System.Globalization
 @if (Model != null) {
-  @Html.TextBox("", Model.Latitude.Value.ToString("G",CultureInfo.InvariantCulture) + "," + Model.Longitude.Value.ToString("G",CultureInfo.InvariantCulture), new { @class = "editor-for-dbgeography", disabled = true })
+  @Html.TextBox("", Model.Latitude.Value.ToString("G",CultureInfo.InvariantCulture) + "," + Model.Longitude.Value.ToString("G",CultureInfo.InvariantCulture), new { @class = "editor-for-dbgeography" })
 } else {
   @Html.TextBox("", "", new { @class = "editor-for-dbgeography" }) 
 }
